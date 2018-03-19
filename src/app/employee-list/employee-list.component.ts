@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { FormControl } from '@angular/forms';
-import { sortBy } from 'lodash';
+import { sortBy } from 'lodash-es';
 import { debounceTime, startWith, switchMap } from 'rxjs/operators';
 import { combineLatest } from 'rxjs/observable/combineLatest';
 
