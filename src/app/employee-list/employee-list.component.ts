@@ -21,8 +21,9 @@ export class EmployeeListComponent {
 
   constructor(loader: EmployeeLoaderService) {
     // .valueChanges is missing the initial value; add it:
-    const nameFilter$ = this.nameFilter.valueChanges
-      .pipe(startWith(this.nameFilter.value));
+    const nameFilter$: Observable<string> =
+      this.nameFilter.valueChanges
+        .pipe(startWith(this.nameFilter.value));
     const sort$ = this.sort.valueChanges
       .pipe(startWith(this.sort.value));
 
