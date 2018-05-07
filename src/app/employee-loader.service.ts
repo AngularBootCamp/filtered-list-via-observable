@@ -13,7 +13,9 @@ const API_LATENCY = 100;
 // Set to 3000 to see that out-of-order replies don't cause any problem:
 const API_JITTER = 100;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class EmployeeLoaderService {
   constructor(private http: HttpClient) { }
 
