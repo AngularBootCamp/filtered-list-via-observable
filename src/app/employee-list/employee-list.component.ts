@@ -21,19 +21,19 @@ export class EmployeeListComponent {
 
   constructor(loader: EmployeeLoaderService) {
     // .valueChanges is missing the initial value; add it:
-    const nameFilter$: Observable<string> =
+    const nameFilter: Observable<string> =
       this.nameFilter.valueChanges
         .pipe(startWith(this.nameFilter.value));
-    const sort$ = this.sort.valueChanges
+    const sort = this.sort.valueChanges
       .pipe(startWith(this.sort.value));
 
     // List reacts to filter and sort changes
     this.filteredList = combineLatest(
-      nameFilter$.pipe(
+      nameFilter.pipe(
         debounceTime(250),
         switchMap(x => loader.getList(x))),
-      sort$,
-      (list, sort) => sortBy(list, sort)
+      sort,
+      (list, sortVal) => sortBy(list, sortVal)
     );
 
     // Detail reacts to selected employee changes
