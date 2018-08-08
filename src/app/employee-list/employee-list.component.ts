@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { Observable, Subject, combineLatest } from 'rxjs';
-import { debounceTime, startWith, switchMap } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { sortBy } from 'lodash-es';
+import { combineLatest, Observable, Subject } from 'rxjs';
+import { debounceTime, startWith, switchMap } from 'rxjs/operators';
 
-import { EmployeeLoaderService } from '../employee-loader.service';
 import { Employee } from '../employee';
+import { EmployeeLoaderService } from '../employee-loader.service';
 
 @Component({
   selector: 'employee-list',
