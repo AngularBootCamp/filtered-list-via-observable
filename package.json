@@ -27,7 +27,7 @@
     "classlist.js": "^1.1.20150312",
     "core-js": "2.5.7",
     "jasmine": "^3.1.0",
-    "lodash": "4.17.4",
+    "lodash": "4.17.10",
     "lodash-es": "^4.17.10",
     "rxjs": "^6.2.2",
     "web-animations-js": "^2.3.1",
