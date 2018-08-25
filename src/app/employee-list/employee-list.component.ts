@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { sortBy } from 'lodash-es';
 import { combineLatest, Observable, Subject } from 'rxjs';
-import { debounceTime, startWith, switchMap } from 'rxjs/operators';
+import { debounceTime, map, startWith, switchMap } from 'rxjs/operators';
 
 import { Employee } from '../employee';
 import { EmployeeLoaderService } from '../employee-loader.service';
@@ -31,9 +31,11 @@ export class EmployeeListComponent {
     this.filteredList = combineLatest(
       nameFilter.pipe(
         debounceTime(250),
-        switchMap(x => loader.getList(x))),
-      sort,
-      (list, sortVal) => sortBy(list, sortVal)
+        switchMap(x => loader.getList(x))
+      ),
+      sort
+    ).pipe(
+      map(([list, sortKey]) => sortBy(list, sortKey))
     );
 
     // Detail reacts to selected employee changes
