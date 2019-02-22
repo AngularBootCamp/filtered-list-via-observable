@@ -7,7 +7,7 @@ import { Employee } from '../employee';
   templateUrl: './employee-list-table-view.component.html'
 })
 export class EmployeeListTableViewComponent {
-  @Input() list: Employee[];
-  @Input() selectedId: number;
+  @Input() list: Employee[] = [];
+  @Input() selectedId: number = 0;
   @Output() selectId = new EventEmitter<number>();
 }

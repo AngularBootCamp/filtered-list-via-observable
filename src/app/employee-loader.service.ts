@@ -5,13 +5,13 @@ import { delay } from 'rxjs/operators';
 
 import { Employee } from './employee';
 
-const API_URL = 'https://api.angularbootcamp.com';
+const apiUrl = 'https://api.angularbootcamp.com';
 
 // Configure the amount of latency and jitter to simulate
-const API_LATENCY = 100;
+const apiLatency = 100;
 
 // Set to 3000 to see that out-of-order replies don't cause any problem:
-const API_JITTER = 100;
+const apiJitter = 100;
 
 @Injectable({
   providedIn: 'root'
@@ -26,16 +26,16 @@ export class EmployeeLoaderService {
       .set('q', searchText)
       .set('_limit', '20');
 
-    return this.http.get<Employee[]>(API_URL + '/employees', { params })
+    return this.http.get<Employee[]>(apiUrl + '/employees', { params })
       .pipe(delay(randomDelay()));
   }
 
   getDetails(employeeId: number): Observable<Employee> {
-    return this.http.get<Employee>(`${API_URL}/employees/${employeeId}`)
+    return this.http.get<Employee>(`${apiUrl}/employees/${employeeId}`)
       .pipe(delay(randomDelay()));
   }
 }
 
 function randomDelay() {
-  return Math.round(API_LATENCY + Math.random() * API_JITTER);
+  return Math.round(apiLatency + Math.random() * apiJitter);
 }
