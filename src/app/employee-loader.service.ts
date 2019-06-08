@@ -17,7 +17,7 @@ const apiJitter = 100;
   providedIn: 'root'
 })
 export class EmployeeLoaderService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getList(searchText: string): Observable<Employee[]> {
     // One of several ways to set up HTTP request URL parameters
@@ -26,12 +26,14 @@ export class EmployeeLoaderService {
       .set('q', searchText)
       .set('_limit', '20');
 
-    return this.http.get<Employee[]>(apiUrl + '/employees', { params })
+    return this.http
+      .get<Employee[]>(apiUrl + '/employees', { params })
       .pipe(delay(randomDelay()));
   }
 
   getDetails(employeeId: number): Observable<Employee> {
-    return this.http.get<Employee>(`${apiUrl}/employees/${employeeId}`)
+    return this.http
+      .get<Employee>(`${apiUrl}/employees/${employeeId}`)
       .pipe(delay(randomDelay()));
   }
 }

@@ -1,13 +1,19 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 
 import { Employee } from '../employee';
 
 @Component({
   selector: 'employee-list-table-view',
-  templateUrl: './employee-list-table-view.component.html'
+  templateUrl: './employee-list-table-view.component.html',
+  styleUrls: ['./employee-list-table-view.component.css']
 })
 export class EmployeeListTableViewComponent {
   @Input() list: Employee[] = [];
-  @Input() selectedId: number = 0;
+  @Input() selectedId = 0;
   @Output() selectId = new EventEmitter<number>();
 }

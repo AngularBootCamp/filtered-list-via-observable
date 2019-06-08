@@ -15,11 +15,7 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
     EmployeeDetailComponent,
     EmployeeListTableViewComponent
   ],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, ReactiveFormsModule, HttpClientModule],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
