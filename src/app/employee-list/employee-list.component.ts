@@ -27,21 +27,21 @@ export class EmployeeListComponent {
   constructor(loader: EmployeeLoaderService) {
     // .valueChanges is missing the initial value; add it:
     const nameFilter = this.nameFilter.valueChanges.pipe(
-      startWith<string>(this.nameFilter.value)
+      startWith(this.nameFilter.value as string)
     );
 
     const sort = this.sort.valueChanges.pipe(
-      startWith<string>(this.sort.value)
+      startWith(this.sort.value as string)
     );
 
     // List reacts to filter and sort changes
-    this.filteredList = combineLatest(
+    this.filteredList = combineLatest([
       nameFilter.pipe(
         debounceTime(250),
         switchMap(x => loader.getList(x))
       ),
       sort
-    ).pipe(map(([list, sortKey]) => sortBy(list, sortKey)));
+    ]).pipe(map(([list, sortKey]) => sortBy(list, sortKey)));
 
     // Detail reacts to selected employee changes
     this.selectedEmployee = this.selectedId.pipe(
