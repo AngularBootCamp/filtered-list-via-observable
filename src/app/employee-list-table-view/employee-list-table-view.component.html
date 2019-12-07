@@ -3,7 +3,7 @@
     *ngFor="let employee of list"
     (click)="selectId.emit(employee.id)"
     [style.background-color]="
-      employee.id == selectedId ? 'yellow' : ''
+      employee.id === selectedId ? 'yellow' : ''
     "
   >
     <td>

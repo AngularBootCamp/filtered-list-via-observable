@@ -27,11 +27,11 @@ export class EmployeeListComponent {
   constructor(loader: EmployeeLoaderService) {
     // .valueChanges is missing the initial value; add it:
     const nameFilter = this.nameFilter.valueChanges.pipe(
-      startWith(this.nameFilter.value as string)
+      startWith<string>(this.nameFilter.value as string)
     );
 
     const sort = this.sort.valueChanges.pipe(
-      startWith(this.sort.value as string)
+      startWith<string>(this.sort.value as string)
     );
 
     // List reacts to filter and sort changes
