@@ -178,3 +178,6 @@ a.btn-floating {
   font-size: 1.3rem;
   line-height: inherit;
 }
+.unselectable {
+  user-select: none;
+}
