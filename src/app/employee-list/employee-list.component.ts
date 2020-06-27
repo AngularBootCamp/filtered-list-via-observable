@@ -18,7 +18,7 @@ import { EmployeeLoaderService } from '../employee-loader.service';
 })
 export class EmployeeListComponent {
   nameFilter = new FormControl('');
-  sort = new FormControl('last_name');
+  sort = new FormControl('lastName');
 
   filteredList: Observable<Employee[]>;
   selectedId = new Subject<number>();
