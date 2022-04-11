@@ -11,11 +11,11 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeListComponent,
     EmployeeDetailComponent,
+    EmployeeListComponent,
     EmployeeListTableViewComponent
   ],
-  imports: [BrowserModule, ReactiveFormsModule, HttpClientModule],
+  imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

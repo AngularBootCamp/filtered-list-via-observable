@@ -14,6 +14,6 @@ import { Employee } from '../employee';
 })
 export class EmployeeListTableViewComponent {
   @Input() list: Employee[] = [];
-  @Input() selectedId = 0;
+  @Input() selectedId: number | null = null;
   @Output() selectId = new EventEmitter<number>();
 }
