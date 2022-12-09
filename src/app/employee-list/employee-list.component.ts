@@ -17,8 +17,8 @@ import { EmployeeLoaderService } from '../employee-loader.service';
   templateUrl: './employee-list.component.html'
 })
 export class EmployeeListComponent {
-  nameFilter = new FormControl('');
-  sort = new FormControl('lastName');
+  nameFilter = new FormControl('', { nonNullable: true });
+  sort = new FormControl('lastName', { nonNullable: true });
 
   filteredList: Observable<Employee[]>;
   selectedId = new Subject<number>();
@@ -27,11 +27,11 @@ export class EmployeeListComponent {
   constructor(loader: EmployeeLoaderService) {
     // .valueChanges is missing the initial value; add it:
     const nameFilter = this.nameFilter.valueChanges.pipe(
-      startWith<string>(this.nameFilter.value as string)
+      startWith(this.nameFilter.value)
     );
 
     const sort = this.sort.valueChanges.pipe(
-      startWith<string>(this.sort.value as string)
+      startWith(this.sort.value)
     );
 
     // List reacts to filter and sort changes

@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -20,14 +20,12 @@ export class EmployeeLoaderService {
   constructor(private http: HttpClient) {}
 
   getList(searchText: string): Observable<Employee[]> {
-    // One of several ways to set up HTTP request URL parameters
-    // without concatenating them manually.
-    const params = new HttpParams()
-      .set('q', searchText)
-      .set('_limit', '20');
+    const params = { q: searchText, _limit: '20' };
 
     return this.http
-      .get<Employee[]>(apiUrl + '/employees', { params })
+      .get<Employee[]>(apiUrl + '/employees', {
+        params
+      })
       .pipe(delay(randomDelay()));
   }
 
