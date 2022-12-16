@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { sortBy } from 'lodash-es';
-import { Observable, Subject, combineLatest } from 'rxjs';
 import {
+  Observable,
+  Subject,
+  combineLatest,
   debounceTime,
   map,
   startWith,
   switchMap
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import { Employee } from '../employee';
 import { EmployeeLoaderService } from '../employee-loader.service';
