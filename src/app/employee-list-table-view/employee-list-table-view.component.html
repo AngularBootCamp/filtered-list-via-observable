@@ -1,10 +1,8 @@
-<table class="bordered unselectable">
+<table>
   <tr
     *ngFor="let employee of list"
     (click)="selectId.emit(employee.id)"
-    [style.background-color]="
-      employee.id === selectedId ? 'yellow' : ''
-    "
+    [class.highlighted]="employee.id === selectedId"
   >
     <td>
       <a>{{ employee.firstName }}</a>

@@ -8,9 +8,9 @@ import {
 import { Employee } from '../employee';
 
 @Component({
-  selector: 'employee-list-table-view',
+  selector: 'app-employee-list-table-view',
   templateUrl: './employee-list-table-view.component.html',
-  styleUrls: ['./employee-list-table-view.component.css']
+  styleUrls: ['./employee-list-table-view.component.scss']
 })
 export class EmployeeListTableViewComponent {
   @Input() list: Employee[] = [];

@@ -15,8 +15,9 @@ import { Employee } from '../employee';
 import { EmployeeLoaderService } from '../employee-loader.service';
 
 @Component({
-  selector: 'employee-list',
-  templateUrl: './employee-list.component.html'
+  selector: 'app-employee-list',
+  templateUrl: './employee-list.component.html',
+  styleUrls: ['./employee-list.component.scss']
 })
 export class EmployeeListComponent {
   nameFilter = new FormControl('', { nonNullable: true });
