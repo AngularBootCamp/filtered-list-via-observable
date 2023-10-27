@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { sortBy } from 'lodash-es';
 import {
   Observable,
   Subject,
@@ -20,8 +19,19 @@ import { EmployeeLoaderService } from '../employee-loader.service';
   styleUrls: ['./employee-list.component.scss']
 })
 export class EmployeeListComponent {
+  // We make sure that the sort options will always have a value
+  // that is the name of a property on Employee
+  sortCriteria: { display: string; value: keyof Employee }[] = [
+    { display: 'Last Name', value: 'lastName' },
+    { display: 'Hours Worked', value: 'hoursWorked' }
+  ];
   nameFilter = new FormControl('', { nonNullable: true });
-  sort = new FormControl('lastName', { nonNullable: true });
+  // We tell TypeScript that the value of this will always be a
+  // property of Employee, which works because of the types of
+  // sortCriteria
+  sort = new FormControl<keyof Employee>(this.sortCriteria[0].value, {
+    nonNullable: true
+  });
 
   filteredList: Observable<Employee[]>;
   selectedId = new Subject<number>();
@@ -44,11 +54,32 @@ export class EmployeeListComponent {
         switchMap(x => loader.getList(x))
       ),
       sort
-    ]).pipe(map(([list, sortKey]) => sortBy(list, sortKey)));
+    ]).pipe(
+      // list.sort() mutates the array, so our linter makes sure
+      // we are sorting a copy of the original list, to be safe
+      map(([list, sortKey]) =>
+        [...list].sort(propertyComparator(sortKey))
+      )
+    );
 
     // Detail reacts to selected employee changes
     this.selectedEmployee = this.selectedId.pipe(
       switchMap(id => loader.getDetails(id))
     );
   }
+}
+
+// By using a generic parameter instead of Employee, we create a
+// general-purpose comparator. `keyof` makes sure that the value
+// passed in is actually the name of a property on the type.
+function propertyComparator<T>(key: keyof T) {
+  return (a: T, b: T) => {
+    if (a[key] < b[key]) {
+      return -1;
+    } else if (a[key] > b[key]) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
 }
