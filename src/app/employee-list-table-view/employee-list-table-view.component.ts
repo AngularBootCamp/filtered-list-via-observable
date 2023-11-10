@@ -1,3 +1,4 @@
+import { NgFor } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -10,7 +11,9 @@ import { Employee } from '../employee';
 @Component({
   selector: 'app-employee-list-table-view',
   templateUrl: './employee-list-table-view.component.html',
-  styleUrls: ['./employee-list-table-view.component.scss']
+  styleUrls: ['./employee-list-table-view.component.scss'],
+  standalone: true,
+  imports: [NgFor]
 })
 export class EmployeeListTableViewComponent {
   @Input() list: Employee[] = [];

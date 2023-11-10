@@ -1,5 +1,6 @@
+import { AsyncPipe, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {
   Observable,
   Subject,
@@ -11,12 +12,22 @@ import {
 } from 'rxjs';
 
 import { Employee } from '../employee';
+import { EmployeeDetailComponent } from '../employee-detail-view/employee-detail-view.component';
+import { EmployeeListTableViewComponent } from '../employee-list-table-view/employee-list-table-view.component';
 import { EmployeeLoaderService } from '../employee-loader.service';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.scss']
+  styleUrls: ['./employee-list.component.scss'],
+  standalone: true,
+  imports: [
+    AsyncPipe,
+    EmployeeListTableViewComponent,
+    EmployeeDetailComponent,
+    NgFor,
+    ReactiveFormsModule
+  ]
 })
 export class EmployeeListComponent {
   // We make sure that the sort options will always have a value
