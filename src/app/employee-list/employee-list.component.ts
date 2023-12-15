@@ -19,7 +19,7 @@ import { EmployeeLoaderService } from '../employee-loader.service';
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.scss'],
+  styleUrl: './employee-list.component.scss',
   standalone: true,
   imports: [
     AsyncPipe,

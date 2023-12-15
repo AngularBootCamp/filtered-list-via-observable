@@ -28,9 +28,9 @@
     [list]="(filteredList | async) ?? []"
     [selectedId]="selectedId | async"
     (selectId)="selectedId.next($event)"
-  ></app-employee-list-table-view>
+  />
 </article>
 
 <app-employee-detail-view
   [employee]="(selectedEmployee | async) ?? undefined"
-></app-employee-detail-view>
+/>

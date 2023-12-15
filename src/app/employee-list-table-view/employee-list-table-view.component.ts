@@ -11,12 +11,12 @@ import { Employee } from '../employee';
 @Component({
   selector: 'app-employee-list-table-view',
   templateUrl: './employee-list-table-view.component.html',
-  styleUrls: ['./employee-list-table-view.component.scss'],
+  styleUrl: './employee-list-table-view.component.scss',
   standalone: true,
   imports: [NgFor]
 })
 export class EmployeeListTableViewComponent {
-  @Input() list: Employee[] = [];
-  @Input() selectedId: number | null = null;
+  @Input({ required: true }) list!: Employee[];
+  @Input({ required: true }) selectedId!: number | null;
   @Output() selectId = new EventEmitter<number>();
 }
