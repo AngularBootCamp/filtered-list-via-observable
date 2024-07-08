@@ -14,12 +14,11 @@
     <div>
       <label for="sort">Sort By</label>
       <select id="sort" type="text" [formControl]="sort">
-        <option
-          *ngFor="let sortCriterion of sortCriteria"
-          [value]="sortCriterion.value"
-        >
-          {{ sortCriterion.display }}
-        </option>
+        @for (sortCriterion of sortCriteria; track sortCriterion) {
+          <option [value]="sortCriterion.value">
+            {{ sortCriterion.display }}
+          </option>
+        }
       </select>
     </div>
   </div>

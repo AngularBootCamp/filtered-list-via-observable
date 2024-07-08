@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -25,7 +25,6 @@ import { EmployeeLoaderService } from '../employee-loader.service';
     AsyncPipe,
     EmployeeListTableViewComponent,
     EmployeeDetailComponent,
-    NgFor,
     ReactiveFormsModule
   ]
 })
